@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -30,5 +31,9 @@ public class MainActivity extends AppCompatActivity {
         items.add("Buy milk");
         items.add("Buy cheese");
         items.add("Drink milk");
+
+        ItemsAdapter itemsAdapter = new ItemsAdapter(items);
+        rvList.setAdapter(itemsAdapter);
+        rvList.setLayoutManager(new LinearLayoutManager(this));
     }
 }
