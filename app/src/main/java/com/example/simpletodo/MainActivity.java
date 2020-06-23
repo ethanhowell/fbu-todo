@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnAdd;
     EditText etTodo;
     RecyclerView rvList;
+    ItemsAdapter itemsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,15 @@ public class MainActivity extends AppCompatActivity {
         items.add("Buy cheese");
         items.add("Drink milk");
 
-        final ItemsAdapter itemsAdapter = new ItemsAdapter(items);
+        ItemsAdapter.OnLongClickListener onLongClickListener = new ItemsAdapter.OnLongClickListener() {
+            @Override
+            public void onItemLongClick(int position) {
+                items.remove(position);
+                itemsAdapter.notifyItemRemoved(position);
+                Toast.makeText(getApplicationContext(), "Item successfully removed", Toast.LENGTH_SHORT).show();
+            }
+        };
+        itemsAdapter = new ItemsAdapter(items, onLongClickListener);
         rvList.setAdapter(itemsAdapter);
         rvList.setLayoutManager(new LinearLayoutManager(this));
 
@@ -48,4 +57,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }
