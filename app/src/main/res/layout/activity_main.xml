@@ -25,9 +25,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvList"
-        android:layout_width="364dp"
-        android:layout_height="364dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_above="@+id/etAdd"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="139dp" />
+        android:layout_marginBottom="0dp" />
 </RelativeLayout>
